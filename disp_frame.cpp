@@ -5,13 +5,23 @@ Date: March 23rd 2016
 Display Frame Function for LED Matrix
 *****************************************************************/
 
+//Pulses clock on P2.1 the number of times that are specified by integer i
+void clock::frame_display(short int i){
+  for(i; i>0 ; i--){
+    P2OUT |= BIT1;
+    delayMicroseconds(5);
+    P2OUT &= ~BIT1;
+    delayMicroseconds(5);
+  }
+}
+
 void disp_frame::frame_display(unsigned long frame[]){
 
 unsigned long frame_shift;
 short int colour = 0;
 
-for(int i=0; i<8; i++) // for each column
-{
+for(int i=0; i<8; i++){ // for each column
+
   frame_shift = frame[i];
   colour = 0;
 
@@ -53,5 +63,5 @@ for(int i=0; i<8; i++) // for each column
 
     colour++;
   	}
-	}
+  }
 }

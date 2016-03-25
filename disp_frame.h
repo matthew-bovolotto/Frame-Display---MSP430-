@@ -5,6 +5,8 @@
 class frame_display{
 		public:
 			frame_display();
-			bool disp_frame(unsigned long[]);
+			void disp_frame(unsigned long[]);
+
 		private:
+			void clock(short int i);
 };
